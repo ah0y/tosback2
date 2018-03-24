@@ -1,43 +1,37 @@
-var fs = require('file-system');
-const path = require('path');
-var Promise = require('promise');
-var path_to_read = '../crawl_reviewed/500px.com/'
-var to_read = 'test.txt'
+const simpleGit = require('simple-git');
+// const gitP = require('simple-git/promise');
+// const git = git('../crawl_reviewed/');
 
-var last_file = ''
+var fs = require('fs'),
+    path = require('path'),
+    _ = require('underscore');
 
- myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
+// Return only base file name without dir
+function getMostRecentFileName(dir) {
+    var files = fs.readdirSync(dir);
 
-    fs.readdir(path_to_read, (err, files) => {
-        if (err) throw err;
-        // files.join('')
-        var last_modified = 0;
-        files.forEach(element => {
-            fs.stat(path_to_read + element, (err, data) => {
-                if (err) throw err;
-                // if (data.mtime > last_modified) {
-                    last_modified = data.mtime
-                    last_file = data.mtime
-                    // console.log(last_file)
-                // }
-                // console.log(data.mtime)
-            });
-        });
+    // use underscore for max()
+    return _.max(files, function (f) {
+        var fullpath = path.join(dir, f);
+
+        // ctime = creation time is used
+        // replace with mtime for modification time
+        return fs.statSync(fullpath).ctime;
     });
-    resolve(last_file);
-    }, 2000)
- });
-
-
- var printResult = (results) => {console.log("Results = ", results, "message = ", last_file)}
-
-function main() {
-    Promise.all(myPromise).then(printResult);
-    console.log("\"\"" + last_file);
-
 }
 
-main();
+// console.log(getMostRecentFileName('../crawl_reviewed/500px.com'))
+const p = '../crawl_reviewed/500px.com/first.txt';
 
-
+simpleGit(p).raw(
+    [
+      'log',
+      
+    ], (err, result) => {
+        console.log(result)
+        fs.writeFile('plswork.txt', result, (err) => {
+            if (err) throw err;
+        
+            console.log(p + "The file was succesfully saved!");
+        });  
+    });
