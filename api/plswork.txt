@@ -1,3 +1,9 @@
+commit 36b041e886b7db540ce88df835f23e6d89697d7c
+Author: Aberham Haile <aberhamhaile@Aberhams-MacBook-Pro.local>
+Date:   Sat Mar 24 12:10:17 2018 -0400
+
+    readCommits()
+
 commit 97afd026fbc43383fe5e0b9543f88c5b9aecf6a5
 Author: Aberham Haile <aberhamhaile@Aberhams-MacBook-Pro.local>
 Date:   Sat Mar 24 11:46:09 2018 -0400

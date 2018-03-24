@@ -1,4 +1,7 @@
 const simpleGit = require('simple-git');
+// var firstline = require(firstline)
+
+
 // const gitP = require('simple-git/promise');
 // const git = git('../crawl_reviewed/');
 
@@ -40,6 +43,15 @@ simpleGit(p).raw(
    function readCommits(){ 
     fs.readFile('plswork.txt', 'utf8', (err, data) => {
         if (err) throw err;
-        console.log(data);
+        // console.log(data);
+        // getLatestCommit()
+        var firstLine = data.split('\n').shift();
+        var url = firstLine.substring(firstLine.indexOf(' '), firstLine.length);
+        console.log(url)
       });
     }
+
+
+    // function getLatestCommit() {
+    //     firstline('./plswork.txt');
+    // }
