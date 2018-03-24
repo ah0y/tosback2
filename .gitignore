@@ -5,3 +5,4 @@ rubycode/lib/tosback_secrets.rb
 
 # Ignore bundler config
 /.bundle
+api/node_modules
