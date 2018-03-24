@@ -21,17 +21,25 @@ function getMostRecentFileName(dir) {
 }
 
 // console.log(getMostRecentFileName('../crawl_reviewed/500px.com'))
-const p = '../crawl_reviewed/500px.com/first.txt';
+const p = '../crawl_reviewed/500px.com/';
 
 simpleGit(p).raw(
     [
       'log',
       
     ], (err, result) => {
-        console.log(result)
+        // console.log(result)
         fs.writeFile('plswork.txt', result, (err) => {
             if (err) throw err;
-        
+            readCommits()
             console.log(p + "The file was succesfully saved!");
-        });  
+        })
     });
+
+
+   function readCommits(){ 
+    fs.readFile('plswork.txt', 'utf8', (err, data) => {
+        if (err) throw err;
+        console.log(data);
+      });
+    }
