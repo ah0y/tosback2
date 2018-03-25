@@ -4,18 +4,30 @@
   "description": "api that gives you a link to tosback2's git differences when given a site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
+  "keywords": [
+    "RESTful",
+    "API",
+    "Tutorial"
+  ],
   "author": "ah0y",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
     "file-system": "2.2.2",
     "firstline": "^1.2.1",
+    "mongoose": "^5.0.11",
     "npm": "^5.7.1",
     "promise": "^8.0.1",
     "simple-git": "^1.92.0",
     "simplegit": "^1.0.2",
     "sync": "^0.2.5",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   }
 }
