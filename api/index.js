@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+
 module.exports = {
     TOSurl: function () {
 
@@ -19,31 +21,20 @@ module.exports = {
                     return fs.statSync(fullpath).ctime;
                 });
             }
+
+            // git('../crawl_reviewed/app.net/').raw['log'], (err,result) => {}
             // console.log(getMostRecentFileName('../crawl_reviewed/500px.com'))
-            const p = '../crawl_reviewed/app.net/';
-            simpleGit(p).raw(
-                [
-                    'log',
-                ], (err, result) => {
-                    // console.log(result)
-                    fs.writeFile('plswork.txt', result, (err) => {
-                        if (err) throw err;
-                        readCommits()
-                        console.log(p + "The file was succesfully saved!");
-                        return 'got to git';
-                    })
-                });
-            function readCommits() {
-                fs.readFile('plswork.txt', 'utf8', (err, data) => {
-                    if (err) throw err;
-                    // console.log(data);
-                    // getLatestCommit()
-                    var firstLine = data.split('\n').shift();
-                    var url = firstLine.substring(firstLine.indexOf(' '), firstLine.length);
-                    console.log(url)
-                    return url;
-                });
-            }
+            // const p = '../crawl_reviewed/app.net/';
+            git("log > uh.txt").then(function () {
+
+            }).fail(function (err) { console.error(err); }).then(function () {
+                var data = fs.readFileSync('uh.txt', 'utf8')
+                var firstLine = data.split('\n').shift();
+                var url = firstLine.substring(firstLine.indexOf(' '), firstLine.length);
+                return url
+            }).then(function (val) {
+                console.log(val)
+            });
         }
     }
 }
