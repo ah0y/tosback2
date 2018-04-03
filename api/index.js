@@ -1,8 +1,13 @@
 
 module.exports = {
-    TOSurl: new function() {
-        // import { readFileSync } from 'fs';
+    // paths: function(path){
+    //     _path = path 
+    // },
 
+    TOSurl: new function () {
+        // this.path = _path 
+        // import { readFileSync } from 'fs';
+            var test = 'test'
             const git = require('git-promise');
             var fs = require('fs'),
                 path = require('path'),
@@ -23,7 +28,7 @@ module.exports = {
              // const p = '../crawl_reviewed/app.net/';
             var promise1 =
             
-            git("log > uh.txt").then(function () {
+            git("log -p models > uh.txt").then(function () {
 
             }).fail(function (err) { console.error(err); }).then(function () {
                 var data = fs.readFileSync('uh.txt', 'utf8')
@@ -35,7 +40,11 @@ module.exports = {
                 console.log(val)
             });
 
-            
-                return promise1
+          
+            // console.log(promise1)
+            // promise1.resolve('fufilled')
+            return promise1
         }
     }
+
+    // TOSURL.TOSurl.valuesOf('state')
