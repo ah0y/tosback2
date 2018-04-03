@@ -1,12 +1,9 @@
-import { readFileSync } from 'fs';
 
 module.exports = {
-    TOSurl: function () {
+    TOSurl: new function() {
+        // import { readFileSync } from 'fs';
 
-        return main()
-
-        function main() {
-            const simpleGit = require('simple-git');
+            const git = require('git-promise');
             var fs = require('fs'),
                 path = require('path'),
                 _ = require('underscore');
@@ -21,10 +18,11 @@ module.exports = {
                     return fs.statSync(fullpath).ctime;
                 });
             }
-
             // git('../crawl_reviewed/app.net/').raw['log'], (err,result) => {}
             // console.log(getMostRecentFileName('../crawl_reviewed/500px.com'))
-            // const p = '../crawl_reviewed/app.net/';
+             // const p = '../crawl_reviewed/app.net/';
+            var promise1 =
+            
             git("log > uh.txt").then(function () {
 
             }).fail(function (err) { console.error(err); }).then(function () {
@@ -33,8 +31,11 @@ module.exports = {
                 var url = firstLine.substring(firstLine.indexOf(' '), firstLine.length);
                 return url
             }).then(function (val) {
+                return val
                 console.log(val)
             });
+
+            
+                return promise1
         }
     }
-}
